@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    {% for feedback in user.feedback %}
+        <h3><a href='/feedback/{{feedback.id}}/update'>{{feedback.title}}</a></h3>
+        <p>{{feedback.content}}</p> 
+        <button action="/delete" method="POST">Delete</button>
+    {% endfor %}
+
+<div>
+    <form action="/users/{{user.username}}/feedback/add" >
+        <button>Add Feedback</button>
+    </form>
+
+    <form action='/logout' method="GET">
+        <button>logout</button>
+    </form>
+    
+
+
+{% endblock %}
