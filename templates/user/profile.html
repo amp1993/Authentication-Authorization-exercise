@@ -7,11 +7,11 @@
             <p>{{feedback.content}}</p> 
         <div class="d-inline-flex p-2">
             <form method="POST" action="/feedback/{{feedback.id}}/update">
-                <button type="button" class="btn btn-primary" >Update</button>
+                <button type="submit" class="btn btn-primary" >Update</button>
             </form>
 
-            <form action="/feedback/{{feedback.id}}/delete'" method="POST">
-                <button type="button" class="btn btn-danger">Delete</button>
+            <form action="/feedback/{{feedback.id}}/delete" method="POST">
+                <button type="submit" class="btn btn-danger">Delete</button>
             </form>
         </div>
     {% endfor %}
@@ -20,11 +20,11 @@
 
 <div class="d-inline-flex p-2">
     <form action="/users/{{user.username}}/feedback/add" >
-        <button type="button" class="btn btn-primary" >Add Feedback</button>
+        <button type="submit" class="btn btn-primary" >Add Feedback</button>
     </form>
 
     <form action='/logout' method="GET">
-        <button  type="button" class="btn btn-dark">logout</button>
+        <button  type="submit" class="btn btn-dark">logout</button>
     </form>
 </div>
 

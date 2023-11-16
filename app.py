@@ -9,7 +9,7 @@ from werkzeug.exceptions import Unauthorized
 
 
 app = Flask(__name__)
-# app.debug = True
+app.debug = True
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///flask-feedback' #Add database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -87,7 +87,7 @@ def login():
 
 @app.route('/logout',methods=['GET'])
 def logout():
-    session.clear()
+    session.pop('username')
     return redirect('/')
    
 
@@ -173,9 +173,13 @@ def update_feedback(feedback_id):
 @app.route('/feedback/<int:feedback_id>/delete', methods=['POST'])
 def delete_feedback(feedback_id):
     
+    
+    
     feedback=Feedback.query.get(feedback_id)
     if "username" not in session or feedback.username != session['username']:
         raise Unauthorized()
+    
+    form = DeleteForm()
         
     if form.validate_on_submit():
         db.session.delete(feedback)

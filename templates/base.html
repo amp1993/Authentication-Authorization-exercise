@@ -10,7 +10,11 @@
 <body>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <a class="navbar-brand" href="/register"><b>Flask Feedback</b></a>
-        <a href="/login">Login</a>
+        {% block nav %}
+            {% if request.endpoint == 'register' %}
+                <a href="/login">Login</a>
+            {% endif %}
+         {% endblock %}
     </nav>
     <div class="container">
         {% block content %}
