@@ -15,8 +15,8 @@ class LogInForm(FlaskForm):
     password = PasswordField('Password', validators=[InputRequired()])
     
 class FeedbackForm(FlaskForm):
-    title = StringField('Title',validators=[InputRequired(), Length(max=100)])
-    content = StringField('Content',validators=[InputRequired(), Length(min=3, max=50)])
+    title = StringField('Title',validators=[InputRequired(), Length(max=50)])
+    content = StringField('Content',validators=[InputRequired(), Length(min=3, max=100)])
     
     
 class DeleteForm(FlaskForm):
