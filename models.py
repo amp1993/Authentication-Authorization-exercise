@@ -19,7 +19,7 @@ class User(db.Model):
     email=db.Column(db.String,nullable=False, unique=True)
     first_name=db.Column(db.String,nullable=False)
     last_name=db.Column(db.String,nullable=False)
-    feedback = db.relation('Feedback', backref='user',cascade='all,delete')
+    feedback = db.relationship('Feedback', backref='user',cascade='all,delete')
     
     @classmethod
     def register(cls, username, password, email, first_name, last_name):
